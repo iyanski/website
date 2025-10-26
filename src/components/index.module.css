@@ -138,6 +138,25 @@ nav a:hover {
     gap: 28px;
 }
 
+.heroTitle {
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1.1;
+    margin: 0 0 1.5rem;
+    color: var(--text);
+}
+
+.link {
+    color: var(--accent);
+    text-decoration: none;
+    transition: color .12s ease;
+}
+
+.link:hover {
+    color: var(--accent-hover);
+    text-decoration: underline;
+}
+
 .eyebrow {
     display: inline-flex;
     align-items: center;
@@ -324,6 +343,92 @@ section {
 .contactCard p {
     margin: 6px 0 0;
     color: var(--muted);
+}
+
+/* Blog content styling */
+.blogContent {
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+.blogContent h1,
+.blogContent h2,
+.blogContent h3,
+.blogContent h4,
+.blogContent h5,
+.blogContent h6 {
+    margin: 2rem 0 1rem;
+    color: var(--text);
+}
+
+.blogContent h1 {
+    font-size: 2.5rem;
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 0.5rem;
+}
+
+.blogContent h2 {
+    font-size: 2rem;
+    color: var(--accent);
+}
+
+.blogContent h3 {
+    font-size: 1.5rem;
+}
+
+.blogContent p {
+    margin: 1rem 0;
+    color: var(--muted);
+}
+
+.blogContent ul,
+.blogContent ol {
+    margin: 1rem 0;
+    padding-left: 2rem;
+}
+
+.blogContent li {
+    margin: 0.5rem 0;
+    color: var(--muted);
+}
+
+.blogContent blockquote {
+    border-left: 4px solid var(--accent);
+    padding-left: 1rem;
+    margin: 2rem 0;
+    font-style: italic;
+    color: var(--muted);
+}
+
+.blogContent code {
+    background: var(--surface);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 0.9em;
+}
+
+.blogContent pre {
+    background: var(--surface);
+    padding: 1rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+}
+
+.blogContent pre code {
+    background: none;
+    padding: 0;
+}
+
+.blogContent a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.blogContent a:hover {
+    text-decoration: underline;
 }
 
 .pill {
