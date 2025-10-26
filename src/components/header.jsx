@@ -37,7 +37,7 @@ const Header = () => {
   return (
     <header>
       <div className={`${styles.container} ${styles.nav}`} role="navigation" aria-label="Primary">
-        <a href="#" className={styles.logo} aria-label="Home">
+        <a href="/" className={styles.logo} aria-label="Home">
           <span className={styles.logoBadge} aria-hidden="true">IBT</span> IanTusil
         </a>
         <nav className={styles.navLinks} aria-label="Main">
