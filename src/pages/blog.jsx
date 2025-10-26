@@ -1,5 +1,6 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
+import { Helmet } from "react-helmet"
 import Layout from "../components/layout"
 import * as styles from "../components/index.module.css"
 
@@ -8,6 +9,23 @@ const BlogPage = ({ data }) => {
 
   return (
     <Layout>
+      <Helmet>
+        <title>Blog | IanTusil</title>
+        <meta name="description" content="Thoughts on systems, automation, and building things that work. Insights from a Systems & Automation Engineer." />
+        
+        {/* Open Graph */}
+        <meta property="og:title" content="Blog | IanTusil" />
+        <meta property="og:description" content="Thoughts on systems, automation, and building things that work. Insights from a Systems & Automation Engineer." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://iantusil.com/blog" />
+        <meta property="og:site_name" content="IanTusil" />
+        
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="Blog | IanTusil" />
+        <meta name="twitter:description" content="Thoughts on systems, automation, and building things that work. Insights from a Systems & Automation Engineer." />
+        <meta name="twitter:creator" content="@iyanski" />
+      </Helmet>
       <main>
         <section className={styles.hero}>
           <div className={styles.container}>

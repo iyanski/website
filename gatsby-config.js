@@ -46,6 +46,7 @@ module.exports = {
       },
     },
     `gatsby-plugin-slug`,
+    `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
