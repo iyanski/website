@@ -3,8 +3,6 @@ title: "Building Systems That Scale"
 date: "2024-01-15"
 ---
 
-# Building Systems That Scale
-
 When I started building automation systems, I made the classic mistake of thinking small. I'd create scripts that worked perfectly for one client, one use case, one specific scenario. Then reality hit: what works for 10 users breaks at 100, and what works for 100 users crumbles at 1000.
 
 ## The Scaling Challenge

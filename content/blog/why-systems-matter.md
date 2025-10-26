@@ -3,8 +3,6 @@ title: "Why Systems Matter More Than You Think"
 date: "2024-01-01"
 ---
 
-# Why Systems Matter More Than You Think
-
 I used to think systems were just technical infrastructure. I was wrong.
 
 Systems are the foundation of everything that works in business. They're the difference between chaos and clarity, between reactive and proactive, between surviving and thriving.

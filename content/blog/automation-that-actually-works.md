@@ -3,8 +3,6 @@ title: "Automation That Actually Works"
 date: "2024-01-08"
 ---
 
-# Automation That Actually Works
-
 Most automation projects fail. Not because the technology is wrong, but because they solve the wrong problem.
 
 ## The Real Problem
