@@ -1,6 +1,6 @@
 ---
 title: "The Hidden Engine of Digital Transformation: Why Systems Integration Decides Who Wins"
-date: "2024-10-25"
+date: "2025-10-25"
 ---
 
 Over 70% of digital transformations fail, and it’s rarely because of bad tools.
