@@ -20,6 +20,17 @@ const Layout = ({
       <Helmet>
         <link rel="icon" type="image/png" href="/favicon.png" />
         <link rel="shortcut icon" type="image/png" href="/favicon.png" />
+        
+        {/* Google tag (gtag.js) */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-1PCKBHS5L6"></script>
+        <script>
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-1PCKBHS5L6');
+          `}
+        </script>
       </Helmet>
       <Header />
       {children}
