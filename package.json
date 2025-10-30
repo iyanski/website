@@ -40,7 +40,8 @@
         "start": "NODE_OPTIONS='--no-deprecation' gatsby develop",
         "serve": "NODE_OPTIONS='--no-deprecation' gatsby serve",
         "clean": "gatsby clean",
-        "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+        "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
+        "prepare": "husky"
     },
     "repository": {
         "type": "git",
