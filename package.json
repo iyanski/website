@@ -35,6 +35,9 @@
         "gatsby"
     ],
     "license": "0BSD",
+    "engines": {
+        "node": ">=20.0.0"
+    },
     "scripts": {
         "build": "NODE_OPTIONS='--no-deprecation' gatsby build",
         "develop": "NODE_OPTIONS='--no-deprecation' gatsby develop",
