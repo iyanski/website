@@ -36,7 +36,7 @@
     ],
     "license": "0BSD",
     "engines": {
-        "node": ">=20.0.0"
+        "node": ">=18.0.0"
     },
     "scripts": {
         "build": "NODE_OPTIONS='--no-deprecation' gatsby build",
