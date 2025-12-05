@@ -1,6 +1,6 @@
 ---
 title: "Event-Driven vs API-Driven Integration: Which Architecture Fits Your Business?"
-date: "2025-12-5"
+date: "2025-12-05"
 ---
 
 As businesses scale, integrations become the silent engine that keeps systems synchronized, data flowing, and operations running smoothly. Whether you're connecting platforms like FSM, Zoho Desk, THD Service Channel, your e-commerce stack, or internal SaaS tools, _how_ these systems communicate matters just as much as _what_ they communicate.
