@@ -4,8 +4,6 @@ date: "2026-01-26"
 description: "A tactical framework for lead engineers to guarantee every epic is defined and structured for predictable, high-confidence delivery."
 ---
 
-# How a Lead Software Engineer Ensures an Epic Is _Buildable_
-
 In many engineering organisations, epics fail not because of poor execution, but because they were never _buildable_ to begin with.
 
 They enter the backlog with vague intent, hidden assumptions, unclear boundaries, and optimistic timelines. The result is predictable: rework, stalled delivery, friction between product and engineering, and missed roadmap commitments.
