@@ -4,7 +4,7 @@ import LinkedInIcon from "./icons/LinkedInIcon"
 import GithubIcon from "./icons/GithubIcon"
 
 const navLinks = [
-  { label: "Showcase", href: "/#showcase" },
+  { label: "Writing", href: "/#writing" },
   { label: "Work", href: "/#work" },
   { label: "Approach", href: "/#approach" },
   { label: "About", href: "/#about" },

@@ -1,5 +1,5 @@
 import React from "react"
-import { Link } from "gatsby"
+import { Link, graphql, useStaticQuery } from "gatsby"
 import LinkedInIcon from "../components/icons/LinkedInIcon"
 import GithubIcon from "../components/icons/GithubIcon"
 
@@ -7,7 +7,35 @@ function FadeIn({ children, className = "", direction, delay }) {
   return <div className={className}>{children}</div>
 }
 
+const cardAccents = [
+  "from-zinc-900 to-zinc-700",
+  "from-emerald-700 to-zinc-800",
+  "from-zinc-800 to-zinc-500",
+]
+
 export default function PersonalWebsiteLayout() {
+  const { allMarkdownRemark } = useStaticQuery(graphql`
+    query LatestPosts {
+      allMarkdownRemark(sort: { frontmatter: { date: DESC } }, limit: 3) {
+        nodes {
+          id
+          excerpt(pruneLength: 140)
+          timeToRead
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+            description
+            date(formatString: "MMM D, YYYY")
+          }
+        }
+      }
+    }
+  `)
+
+  const posts = allMarkdownRemark.nodes
+
   const showcaseItems = [
     {
       type: "Company",
@@ -31,28 +59,19 @@ export default function PersonalWebsiteLayout() {
 
   const projects = [
     {
-      title: "Project or Company Name",
-      category: "Web Platform / SaaS / Internal Tool",
-      summary:
-        "Write a concise overview of what the project is, who it serves, and what problem it solves.",
-      outcome: "Add the business or operational impact here.",
-      link: "#",
+      title: "Giftees",
+      category: "Commerce / Gifting Platform",
+      summary: showcaseItems[0].description,
     },
     {
-      title: "Project or Company Name",
-      category: "Automation / Integration / Product",
-      summary:
-        "Use this card to highlight one of your strongest projects with a short, outcome-oriented summary.",
-      outcome: "Describe the result, value, or differentiator.",
-      link: "#",
+      title: "TapForCare",
+      category: "Healthcare / Care Coordination",
+      summary: showcaseItems[1].description,
     },
     {
-      title: "Project or Company Name",
-      category: "Startup / Service / Platform",
-      summary:
-        "Showcase a company, platform, or technical initiative that reflects your range and quality of execution.",
-      outcome: "Mention traction, efficiency gains, or strategic value.",
-      link: "#",
+      title: "StatsCentral",
+      category: "Sports Data / SaaS Platform",
+      summary: showcaseItems[2].description,
     },
   ]
 
@@ -92,10 +111,10 @@ export default function PersonalWebsiteLayout() {
 
           <nav className="hidden items-center gap-8 md:flex">
             <a
-              href="#showcase"
+              href="#writing"
               className="text-sm text-zinc-600 transition hover:text-zinc-900"
             >
-              Showcase
+              Writing
             </a>
             <a
               href="#work"
@@ -125,7 +144,7 @@ export default function PersonalWebsiteLayout() {
 
           <div className="flex items-center gap-4">
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/iyanski/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-zinc-500 transition hover:text-zinc-900"
@@ -134,7 +153,7 @@ export default function PersonalWebsiteLayout() {
               <LinkedInIcon />
             </a>
             <a
-              href="https://github.com"
+              href="https://github.com/iyanski"
               target="_blank"
               rel="noopener noreferrer"
               className="text-zinc-500 transition hover:text-zinc-900"
@@ -252,37 +271,70 @@ export default function PersonalWebsiteLayout() {
           </div>
         </section>
 
-        {/* Showcase */}
-        <section id="showcase" className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
+        {/* Writing */}
+        <section id="writing" className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
           <FadeIn direction="up">
-            <div className="max-w-2xl">
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-zinc-500">
-                Showcase
-              </p>
-              <h2 className="mt-4 text-3xl font-semibold tracking-tight text-zinc-950 md:text-4xl">
-                A curated introduction to the kinds of products, ventures, and
-                systems I build.
-              </h2>
+            <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+              <div className="max-w-2xl">
+                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-zinc-500">
+                  Writing
+                </p>
+                <h2 className="mt-4 text-3xl font-semibold tracking-tight text-zinc-950 md:text-4xl">
+                  Notes on systems, integration, and automation that holds up in
+                  production.
+                </h2>
+              </div>
+              <Link
+                to="/blog"
+                className="shrink-0 rounded-full border border-zinc-300 px-5 py-2.5 text-sm font-medium text-zinc-900 transition hover:border-zinc-900"
+              >
+                All articles →
+              </Link>
             </div>
           </FadeIn>
 
-          <div className="mt-14 grid gap-6 md:grid-cols-3">
-            {showcaseItems.map((item, i) => (
-              <FadeIn key={item.title} direction="up" delay={i * 120}>
-                <div className="rounded-[1.75rem] border border-zinc-200 bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:shadow-md">
-                  <div className="mb-5 flex h-10 w-10 items-center justify-center rounded-2xl bg-zinc-900 text-xs font-semibold text-white">
-                    {item.type.slice(0, 1)}
-                  </div>
-                  <h3 className="text-xl font-semibold text-zinc-950">
-                    {item.title}
-                  </h3>
-                  <p className="mt-3 text-sm leading-7 text-zinc-600">
-                    {item.description}
-                  </p>
-                </div>
-              </FadeIn>
-            ))}
-          </div>
+          {posts.length === 0 ? (
+            <p className="mt-14 text-zinc-500">No posts yet.</p>
+          ) : (
+            <div className="mt-14 grid gap-6 md:grid-cols-3">
+              {posts.map((post, i) => (
+                <FadeIn key={post.id} direction="up" delay={i * 120}>
+                  <Link
+                    to={`/blog${post.fields.slug}`}
+                    className="group flex h-full flex-col overflow-hidden rounded-[1.75rem] border border-zinc-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-md"
+                  >
+                    <div
+                      className={`relative h-40 bg-gradient-to-br ${
+                        cardAccents[i % cardAccents.length]
+                      }`}
+                    >
+                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(255,255,255,0.18),_transparent_60%)]" />
+                      <span className="absolute bottom-4 left-5 rounded-full bg-white/15 px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-white backdrop-blur">
+                        Article
+                      </span>
+                    </div>
+
+                    <div className="flex flex-1 flex-col p-7">
+                      <div className="flex items-center gap-2 text-xs font-medium text-zinc-400">
+                        <time>{post.frontmatter.date}</time>
+                        <span aria-hidden="true">·</span>
+                        <span>{post.timeToRead} min read</span>
+                      </div>
+                      <h3 className="mt-3 text-lg font-semibold leading-snug text-zinc-950 transition group-hover:text-zinc-600">
+                        {post.frontmatter.title}
+                      </h3>
+                      <p className="mt-3 line-clamp-4 text-sm leading-7 text-zinc-600">
+                        {post.frontmatter.description || post.excerpt}
+                      </p>
+                      <span className="mt-6 inline-flex text-sm font-medium text-zinc-900 transition group-hover:text-zinc-500">
+                        Read more →
+                      </span>
+                    </div>
+                  </Link>
+                </FadeIn>
+              ))}
+            </div>
+          )}
         </section>
 
         {/* Work */}
@@ -307,8 +359,12 @@ export default function PersonalWebsiteLayout() {
                   direction="up"
                   delay={index * 150}
                 >
-                  <div className="rounded-[1.75rem] border border-white/10 bg-white/5 p-7">
-                    <div className="mb-8 h-44 rounded-[1.25rem] border border-white/10 bg-gradient-to-br from-white/10 to-white/0" />
+                  <div className="flex h-full flex-col rounded-[1.75rem] border border-white/10 bg-white/5 p-7">
+                    <div className="mb-8 flex h-44 items-center justify-center rounded-[1.25rem] border border-white/10 bg-gradient-to-br from-white/10 to-white/0">
+                      <span className="text-5xl font-semibold tracking-tight text-white/25">
+                        {project.title.slice(0, 1)}
+                      </span>
+                    </div>
                     <p className="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-400">
                       {project.category}
                     </p>
@@ -318,15 +374,6 @@ export default function PersonalWebsiteLayout() {
                     <p className="mt-4 text-sm leading-7 text-zinc-300">
                       {project.summary}
                     </p>
-                    <p className="mt-5 text-sm font-medium text-white">
-                      {project.outcome}
-                    </p>
-                    <a
-                      href={project.link}
-                      className="mt-6 inline-flex text-sm font-medium text-white/80 transition hover:text-white"
-                    >
-                      View project →
-                    </a>
                   </div>
                 </FadeIn>
               ))}
@@ -414,10 +461,10 @@ export default function PersonalWebsiteLayout() {
                     href="mailto:hello@iantusil.com"
                     className="rounded-full bg-white px-6 py-3 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200"
                   >
-                    you@example.com
+                    Drop a Message
                   </a>
                   <a
-                    href="https://www.linkedin.com"
+                    href="https://www.linkedin.com/in/iyanski/"
                     className="rounded-full border border-white/20 px-6 py-3 text-sm font-medium text-white transition hover:border-white"
                   >
                     LinkedIn
