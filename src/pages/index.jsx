@@ -11,7 +11,7 @@ export const Head = () => (
     <meta name="theme-color" content="#0f172a" />
     <meta
       property="og:title"
-      content="IanTusil — Systems that make work flow"
+      content="IanTusil — Build systems that make work flow"
     />
     <meta
       property="og:description"
