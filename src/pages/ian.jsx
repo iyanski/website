@@ -2,6 +2,8 @@ import React from "react"
 import { Link, graphql, useStaticQuery } from "gatsby"
 import LinkedInIcon from "../components/icons/LinkedInIcon"
 import GithubIcon from "../components/icons/GithubIcon"
+import statscentralThumb from "../images/statscentral.jpg"
+import cesafiThumb from "../images/cesafi.jpg"
 
 function FadeIn({ children, className = "", direction, delay }) {
   return <div className={className}>{children}</div>
@@ -38,10 +40,10 @@ export default function PersonalWebsiteLayout() {
 
   const showcaseItems = [
     {
-      type: "Company",
-      title: "Giftees",
+      type: "Client",
+      title: "CESAFI",
       description:
-        "A gifting platform concept focused on helping businesses drive sales through digital gift card experiences and promotional campaigns.",
+        "The official digital home of the Cebu Schools Athletic Foundation. Live scores, schedules, standings, athlete profiles, and game highlights across 14 collegiate and high school sports.",
     },
     {
       type: "Company",
@@ -53,15 +55,17 @@ export default function PersonalWebsiteLayout() {
       type: "Company",
       title: "StatsCentral",
       description:
-        "The company enables sports organizations to operate more efficiently through a platform offering real-time data tracking, automated live stream overlays, and player profile management.",
+        "The operating system for modern sports leagues. StatsCentral runs fixtures, rosters, payments, and live stream overlays from one platform, powering 750+ teams and 7,500+ members across 22 sports.",
     },
   ]
 
   const projects = [
     {
-      title: "Giftees",
-      category: "Commerce / Gifting Platform",
+      title: "CESAFI",
+      category: "Collegiate Sports / League Website",
       summary: showcaseItems[0].description,
+      image: cesafiThumb,
+      url: "https://cesafi.ph",
     },
     {
       title: "TapForCare",
@@ -72,6 +76,8 @@ export default function PersonalWebsiteLayout() {
       title: "StatsCentral",
       category: "Sports Data / SaaS Platform",
       summary: showcaseItems[2].description,
+      image: statscentralThumb,
+      url: "https://statscentral.ph",
     },
   ]
 
@@ -353,30 +359,61 @@ export default function PersonalWebsiteLayout() {
             </FadeIn>
 
             <div className="mt-14 grid gap-6 lg:grid-cols-3">
-              {projects.map((project, index) => (
-                <FadeIn
-                  key={`${project.title}-${index}`}
-                  direction="up"
-                  delay={index * 150}
-                >
-                  <div className="flex h-full flex-col rounded-[1.75rem] border border-white/10 bg-white/5 p-7">
-                    <div className="mb-8 flex h-44 items-center justify-center rounded-[1.25rem] border border-white/10 bg-gradient-to-br from-white/10 to-white/0">
-                      <span className="text-5xl font-semibold tracking-tight text-white/25">
-                        {project.title.slice(0, 1)}
-                      </span>
-                    </div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-400">
-                      {project.category}
-                    </p>
-                    <h3 className="mt-3 text-xl font-semibold">
-                      {project.title}
-                    </h3>
-                    <p className="mt-4 text-sm leading-7 text-zinc-300">
-                      {project.summary}
-                    </p>
-                  </div>
-                </FadeIn>
-              ))}
+              {projects.map((project, index) => {
+                const Card = project.url ? "a" : "div"
+                const linkProps = project.url
+                  ? {
+                      href: project.url,
+                      target: "_blank",
+                      rel: "noopener noreferrer",
+                    }
+                  : {}
+                return (
+                  <FadeIn
+                    key={`${project.title}-${index}`}
+                    direction="up"
+                    delay={index * 150}
+                  >
+                    <Card
+                      {...linkProps}
+                      className={`group flex h-full flex-col rounded-[1.75rem] border border-white/10 bg-white/5 p-7 ${
+                        project.url
+                          ? "transition hover:-translate-y-1 hover:border-white/25 hover:bg-white/10"
+                          : ""
+                      }`}
+                    >
+                      {project.image ? (
+                        <img
+                          src={project.image}
+                          alt={`${project.title} website`}
+                          loading="lazy"
+                          className="mb-8 h-44 w-full rounded-[1.25rem] border border-white/10 object-cover object-top"
+                        />
+                      ) : (
+                        <div className="mb-8 flex h-44 items-center justify-center rounded-[1.25rem] border border-white/10 bg-gradient-to-br from-white/10 to-white/0">
+                          <span className="text-5xl font-semibold tracking-tight text-white/25">
+                            {project.title.slice(0, 1)}
+                          </span>
+                        </div>
+                      )}
+                      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-400">
+                        {project.category}
+                      </p>
+                      <h3 className="mt-3 text-xl font-semibold">
+                        {project.title}
+                      </h3>
+                      <p className="mt-4 text-sm leading-7 text-zinc-300">
+                        {project.summary}
+                      </p>
+                      {project.url && (
+                        <span className="mt-6 inline-flex text-sm font-medium text-white transition group-hover:text-zinc-300">
+                          Visit {new URL(project.url).hostname} →
+                        </span>
+                      )}
+                    </Card>
+                  </FadeIn>
+                )
+              })}
             </div>
           </div>
         </section>
