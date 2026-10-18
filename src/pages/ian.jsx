@@ -4,6 +4,7 @@ import LinkedInIcon from "../components/icons/LinkedInIcon"
 import GithubIcon from "../components/icons/GithubIcon"
 import statscentralThumb from "../images/statscentral.jpg"
 import cesafiThumb from "../images/cesafi.jpg"
+import walkthroughThumb from "../images/walkthrough.jpg"
 
 function FadeIn({ children, className = "", direction, delay }) {
   return <div className={className}>{children}</div>
@@ -46,10 +47,10 @@ export default function PersonalWebsiteLayout() {
         "The official digital home of the Cebu Schools Athletic Foundation. Live scores, schedules, standings, athlete profiles, and game highlights across 14 collegiate and high school sports.",
     },
     {
-      type: "Company",
-      title: "TapForCare",
+      type: "Open Source",
+      title: "Walkthrough",
       description:
-        "A healthcare-focused platform concept centered on specialist consultations, patient support, and care coordination.",
+        "A CLI that turns a feature brief into a narrated tutorial video of your running web app. It drives Chrome, redacts sensitive fields, drafts narration, and renders a captioned 1080p MP4 locally on your Mac.",
     },
     {
       type: "Company",
@@ -68,9 +69,11 @@ export default function PersonalWebsiteLayout() {
       url: "https://cesafi.ph",
     },
     {
-      title: "TapForCare",
-      category: "Healthcare / Care Coordination",
+      title: "Walkthrough",
+      category: "Developer Tools / Video Automation",
       summary: showcaseItems[1].description,
+      image: walkthroughThumb,
+      url: "https://exiscosoft.github.io/walkthrough/",
     },
     {
       title: "StatsCentral",
